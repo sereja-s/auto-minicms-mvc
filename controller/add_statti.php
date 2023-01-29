@@ -39,7 +39,7 @@ class add_statti extends ACore_Admin
 		if (!mysqli_query($this->db, $query)) {
 			exit(mysqli_error($this->db));
 		} else {
-			$_SESSION['res'] = "Изменения сохранены";
+			$_SESSION['res'] = "Изменения статьи сохранены";
 			header("Location:?option=add_statti");
 			exit;
 		}

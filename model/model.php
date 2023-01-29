@@ -116,6 +116,9 @@ class model
 		}
 	}
 
+	/** 
+	 * Метод обезопасит логин и пароль полученные методом POST со страницы авторизации и проверит есть ли такой пользователь Если есть, то перенаправит в админку
+	 */
 	public function get_clear_pass_and_log()
 	{
 		$login = strip_tags(mysqli_real_escape_string($this->db, $_POST['login']));
@@ -132,8 +135,10 @@ class model
 				exit(mysqli_error($this->db)); //exit - выводит сообщение и прекращает выполнение текущего скрипта.
 			}
 
+			// проверим что пользователь с таким логином и паролем единственный
 			if (mysqli_num_rows($result) == 1) {
 				$_SESSION['user'] = true;
+				// перенаправим пользователя на главную страницу админки
 				header("Location:?option=admin");
 				exit();
 			} else {

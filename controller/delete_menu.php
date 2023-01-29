@@ -1,26 +1,26 @@
 <?php
-class delete_menu extends ACore_Admin {
-	public function obr() {
-		if($_GET['del']) {
+class delete_menu extends ACore_Admin
+{
+	public function obr()
+	{
+		if ($_GET['del']) {
 			$id_menu = (int)$_GET['del'];
-			
+
 			$query = "DELETE FROM menu WHERE id_menu='$id_menu'";
-			
-			if(mysqli_query($this->db, $query)) {
-				$_SESSION['res'] = "Удалено";
+
+			if (mysqli_query($this->db, $query)) {
+				$_SESSION['res'] = "Пункт меню удалён";
 				header("Location:?option=edit_menu");
 				exit();
-			}
-			else {
+			} else {
 				exit("Ошибка удаления");
 			}
-		}
-		else {
+		} else {
 			exit("Не верные данные для этой страницы");
 		}
 	}
-	
-	public function get_content() {
-		
+
+	public function get_content()
+	{
 	}
 }

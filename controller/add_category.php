@@ -1,34 +1,37 @@
 <?php
-class add_category extends ACore_Admin {
-	
-	protected function obr() {
-		
+class add_category extends ACore_Admin
+{
+
+	protected function obr()
+	{
+
 		$title = $_POST['title'];
-		
-		if(empty($title)) {
+
+		if (empty($title)) {
 			exit("Не заполнены обязательные поля");
 		}
-		
+
 		$query = " INSERT INTO category
 						(name_category)
 					VALUES ('$title')";
-		if(!mysqli_query($this->db, $query)) {
+
+		if (!mysqli_query($this->db, $query)) {
 			exit(mysqli_error($this->db));
-		}
-		else {
-			$_SESSION['res'] = "Изменения сохранены";
+		} else {
+			$_SESSION['res'] = "Изменения категории сохранены";
 			header("Location:?option=add_category");
 			exit;
-		}			
+		}
 	}
-	
-	public function get_content() {
+
+	public function get_content()
+	{
 		echo "<div id='main'>";
 		if (isset($_SESSION['res']) && !empty($_SESSION['res'])) {
 			echo $_SESSION['res'];
 			unset($_SESSION['res']);
 		}
-print <<<HEREDOC
+		print <<<HEREDOC
 <form action='' method='POST'>
 <p>Заголовок категории:<br />
 <input type='text' name='title' style='width:420px;'>

@@ -7,8 +7,9 @@ abstract class ACore_Admin
 
 	public function __construct()
 	{
-
+		// проверяем зарегистрирован ли пользователь (имеет ли доступ к админке)
 		if (!$_SESSION['user']) {
+			// если нет, то перенаправим пользователя на страницу авторизации
 			header("Location:?option=login");
 		}
 
@@ -125,6 +126,7 @@ abstract class ACore_Admin
 	protected function get_text_menu($id)
 	{
 		$query = "SELECT id_menu,name_menu,text_menu FROM menu WHERE id_menu = '$id'";
+
 		$result = mysqli_query($this->db, $query);
 		if (!$result) {
 			exit(mysqli_error($this->db));
@@ -137,6 +139,7 @@ abstract class ACore_Admin
 	protected function get_text_category($id)
 	{
 		$query = "SELECT id_category,name_category FROM category WHERE id_category = '$id'";
+
 		$result = mysqli_query($this->db, $query);
 		if (!$result) {
 			exit(mysqli_error($this->db));
