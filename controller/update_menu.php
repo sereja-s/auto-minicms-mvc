@@ -12,8 +12,8 @@ class update_menu extends ACore_Admin {
 		}
 		
 		$query = "UPDATE  menu SET name_menu='$title',text_menu='$text' WHERE id_menu='$id'";
-		if(!mysql_query($query)) {
-			exit(mysql_error());
+		if(!mysqli_query($this->db, $query)) {
+			exit(mysqli_error($this->db));
 		}
 		else {
 			$_SESSION['res'] = "Изменения сохранены";
@@ -51,4 +51,3 @@ print <<<HEREDOC
 HEREDOC;
 	}
 }
-?>

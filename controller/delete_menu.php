@@ -6,7 +6,7 @@ class delete_menu extends ACore_Admin {
 			
 			$query = "DELETE FROM menu WHERE id_menu='$id_menu'";
 			
-			if(mysql_query($query)) {
+			if(mysqli_query($this->db, $query)) {
 				$_SESSION['res'] = "Удалено";
 				header("Location:?option=edit_menu");
 				exit();
@@ -24,4 +24,3 @@ class delete_menu extends ACore_Admin {
 		
 	}
 }
-?>

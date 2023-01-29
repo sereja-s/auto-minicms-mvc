@@ -26,5 +26,5 @@ if (class_exists($class)) {
 	$obj = new $class;
 	$obj->get_body($class);
 } else {
-	exit("<p>Нет данные для входа</p>");
+	exit("<p>Нет данных для входа</p>");
 }

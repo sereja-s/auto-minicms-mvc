@@ -6,17 +6,19 @@ class admin extends ACore_Admin
 	{
 
 		$query = "SELECT id,title FROM statti";
+
 		$result = mysqli_query($this->db, $query);
 		if (!$result) {
 			exit(mysqli_error($this->db));
 		}
 
+		if ($_SESSION['res']) {
+			echo $_SESSION['res'];
+			unset($_SESSION['res']);
+		}
+
 		echo "<div id='main'>";
-		echo "<a style='color:red' href='?option=add_statti'>Добавить новую статью</a><hr>";
-		//		if($_SESSION['res']) {
-		//			echo $_SESSION['res'];
-		//			unset($_SESSION['res']);
-		//		}
+		echo "<a style='color:orange' href='?option=add_statti'>Добавить новую статью</a><hr>";
 
 		$row = array();
 		for ($i = 0; $i < mysqli_num_rows($result); $i++) {

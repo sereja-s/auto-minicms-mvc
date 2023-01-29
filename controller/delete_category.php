@@ -6,7 +6,7 @@ class delete_category extends ACore_Admin {
 			
 			$query = "DELETE FROM category WHERE id_category='$id_cat'";
 			
-			if(mysql_query($query)) {
+			if(mysqli_query($this->db, $query)) {
 				$_SESSION['res'] = "Удалено";
 				header("Location:?option=edit_category");
 				exit();
@@ -24,4 +24,3 @@ class delete_category extends ACore_Admin {
 		
 	}
 }
-?>

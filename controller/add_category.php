@@ -12,8 +12,8 @@ class add_category extends ACore_Admin {
 		$query = " INSERT INTO category
 						(name_category)
 					VALUES ('$title')";
-		if(!mysql_query($query)) {
-			exit(mysql_error());
+		if(!mysqli_query($this->db, $query)) {
+			exit(mysqli_error($this->db));
 		}
 		else {
 			$_SESSION['res'] = "Изменения сохранены";
@@ -37,4 +37,3 @@ print <<<HEREDOC
 HEREDOC;
 	}
 }
-?>
